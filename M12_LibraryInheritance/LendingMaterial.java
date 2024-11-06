@@ -16,7 +16,9 @@ public class LendingMaterial {
     }
 
 
-    public LendingMaterial(String title, int yearPublished, double cost, String isbn, boolean isReference) {
+    public LendingMaterial(String title, int yearPublished,
+                     double cost, String isbn, 
+                     boolean isReference) {
         this.title = title;
         this.yearPublished = yearPublished;
         this.cost = cost;
