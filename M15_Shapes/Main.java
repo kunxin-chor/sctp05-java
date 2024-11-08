@@ -1,11 +1,10 @@
 package M15_Shapes;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Shape {
-    double getArea() {
-        return 0;
-    }
+abstract class Shape {
+    abstract double getArea();
 }
 
 class Circle extends Shape {
@@ -27,11 +26,9 @@ class Circle extends Shape {
     }
 
     public double getArea() {
-        return 22/7 * (radius * radius);
+        return 22 / 7 * (radius * radius);
     }
 
-
-    
 }
 
 class Square extends Shape {
@@ -55,8 +52,6 @@ class Square extends Shape {
     public double getArea() {
         return length * length;
     }
-    
-
 
 }
 
@@ -72,15 +67,19 @@ class Rectangle extends Shape {
         this.width = width;
         this.height = height;
     }
+
     public double getWidth() {
         return width;
     }
+
     public void setWidth(double width) {
         this.width = width;
     }
+
     public double getHeight() {
         return height;
     }
+
     public void setHeight(double height) {
         this.height = height;
     }
@@ -88,8 +87,29 @@ class Rectangle extends Shape {
     public double getArea() {
         return width * height;
     }
-    
+
 }
+
+class Triangle extends Shape {
+    protected double[] lines = new double[3];
+
+    public Triangle() {
+
+    }
+
+    public Triangle(double l1, double l2, double l3) {
+        lines[0] = l1;
+        lines[1] = l2;
+        lines[2] = l3;
+    }
+
+    @Override
+    double getArea() {
+
+        // my math is bad to do this
+        return 0;
+
+    }
 
 public class Main {
     /* Ask the user to decide whether to create a rectangle, circle or square
