@@ -1,6 +1,11 @@
 package M18_ProductManagement;
 
-public class Product  {
+import java.util.Scanner;
+
+// There's no requirements technically for a class to be marked as abstract
+// but if the class contains at least one abstract method, then
+// it must be marked as abstract
+public abstract class Product implements ITaxable {
     private String sku;
     private String name;
     private double price;
@@ -77,7 +82,38 @@ public class Product  {
         return "Product [sku=" + sku + ", name=" + name + ", price=" + price + "]";
     }
 
-    
+    public void displayDetails() {
+        System.out.println("Product: " + name);
+        System.out.println("SKU: " + sku);
+        System.out.println("Price:" + price);
 
-    
+    }
+
+    public void edit(Scanner sc) {
+        System.out.println("Enter the new product name or press [ENTER] to remain unchanged");
+        String productName = sc.nextLine();
+        // if (productName.length() > 0) {
+        //     setName(productName);
+        // } 
+
+        // <cond> ? <resut if true> : <result if false>)
+        setName( productName.length() > 0 ? productName : this.name);
+
+        System.out.println("Enter the new SKU - press ENTER to skip");
+        String SKU = sc.nextLine();
+        setSku( SKU.length() > 0 ? SKU : this.sku);
+
+        System.out.println("Enter the new price - press ENTER to skip");
+        String price = sc.nextLine();
+        if (price.length() > 0) {
+            setPrice(Double.parseDouble(price));
+        }
+    }
+
+    public abstract double calculateSalesTax(); // no idea on how to calculate sale tax for an abstract producr
+
+    @Override
+    public double getSalesTax() {
+        return calculateSalesTax();
+    }
 }
